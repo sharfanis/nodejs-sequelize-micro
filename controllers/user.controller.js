@@ -81,7 +81,7 @@ function login(req,res) {
                 const token = jwt.sign({
                     email: user.email,
                     userId: user.id
-                }, 'secret' , function(err2, token) {
+                }, process.env.JWT_KEY , function(err2, token) {
                     if(token) {
                     res.status(200).json({
                         message: "Authentication Successful!",
