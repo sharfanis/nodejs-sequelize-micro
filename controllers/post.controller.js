@@ -13,9 +13,10 @@ function save(req,res) {
     content: req.body.content,
     imageUrl: req.body.imageUrl,
     categoryId: req.body.categoryId,
-    userId: 1
+    userId: req.userData.userId
    }
-
+    
+   console.log(req.userData);
 
    const schema = {
      title : {type:"string", optional : false, max:"100"},
@@ -106,7 +107,7 @@ function updatePost(req,res) {
     categoryId: req.body.categoryId,
    }
 
-   const userId = 6;
+   const userId = req.userData.userId;
 
    const schema = {
     title : {type:"string", optional : false, max:"100"},
@@ -150,7 +151,7 @@ function updatePost(req,res) {
 function deletePost(req,res) {
   const postId = req.params.id;
 
-  const userId = 1;
+  const userId = req.userData.userId;
 
   models.Post.destroy({where : {id: postId, userId: userId}}).then((result) => {
     res.status(200).json({
