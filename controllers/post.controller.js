@@ -34,17 +34,31 @@ function save(req,res) {
      })
    }
 
-   models.Post.create(post).then(result => {
-     res.status(201).json({
-      message: "Post Created Successfully!",
-      post:result
-     })
+   models.Category.findByPk(req.body.categoryId).then(result => {
+    if(result) {
+      models.Post.create(post).then(result => {
+        res.status(201).json({
+         message: "Post Created Successfully!",
+         post:result
+        })
+      }).catch(error => {
+       res.status(500).json({
+         message: "Post Creation failed!",
+         post:error
+        })
+      });
+    } else {
+      res.status(400).json({
+        message: "Can't find the category Id!",
+     });
+    }
    }).catch(error => {
-    res.status(500).json({
-      message: "Post Creation failed!",
+    res.status(400).json({
+      message: "Invalid Category Id!",
       post:error
-     })
    });
+  });
+   
 }
 
 
@@ -111,6 +125,8 @@ function updatePost(req,res) {
     })
   }
 
+  models.Category.findByPk(req.body.categoryId).then(result => {
+    if(result) {
    models.Post.update(updatedPost, { where : {id: postId , userId:userId}}).then((result) => {
     res.status(200).json({
       message: "Successfully updated post !",
@@ -122,6 +138,12 @@ function updatePost(req,res) {
       post:error
      });
   });
+} else {
+  res.status(400).json({
+    message: "Can't update because of wrong categoryId !"
+   });
+}
+});
 }
 
 // Delete a post
