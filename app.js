@@ -4,13 +4,17 @@ const app = express();
 
 const postsRoute = require('./routes/posts');
 const userRoute = require('./routes/users');
+const imageRoute = require('./routes/images');
 
 
 
 // use act as a middleware
 app.use(bodyParser.json());
+app.use('/uploads', express.static('uploads'));
+
 app.use("/posts", postsRoute);
 app.use("/user",userRoute);
+app.use("/image", imageRoute);
 
 
 //app.get('/', (req, res) => {
