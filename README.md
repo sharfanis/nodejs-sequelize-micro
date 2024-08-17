@@ -9,14 +9,14 @@ Simple CRUD backend application using ExpressJs :
 
 
 Packages Used:
-    * bcryptjs  --> For Password hashing & validating
-    * body-parser 
-    * express 
-    * fastest-validator  --> For payload schema validation
-    * jsonwebtoken   --> For generating Json Web token
-    * mysql2  --> Enabling sequelize to do crud operation on mysql DB
-    * nodemon  
-    * sequelize --> Our ORM
+ * bcryptjs  --> For Password hashing & validating
+ * body-parser 
+ * express 
+ * fastest-validator  --> For payload schema validation
+ * jsonwebtoken   --> For generating Json Web token
+ * mysql2  --> Enabling sequelize to do crud operation on mysql DB
+ * nodemon  
+ * sequelize --> Our ORM
  
 
 Happy coding !! :) 
