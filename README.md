@@ -16,7 +16,8 @@ Packages Used:
  * jsonwebtoken   --> For generating Json Web token
  * mysql2  --> Enabling sequelize to do crud operation on mysql DB
  * nodemon  
- * sequelize --> Our ORM
+ * sequelize --> ORM
+ * multer --> For image upload
  
 
 Happy coding !! :) 
